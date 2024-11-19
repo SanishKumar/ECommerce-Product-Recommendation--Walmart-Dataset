@@ -100,9 +100,17 @@ def index():
                            random_product_image_urls=random_product_image_urls,
                            random_price = random.choice(price))
 
+# @app.route("/main")
+# def main():
+#     return render_template('main.html')
+
 @app.route("/main")
 def main():
-    return render_template('main.html')
+    import pandas as pd
+    content_based_rec = pd.DataFrame()  # Empty DataFrame for cases with no recommendation data
+    message = "Please search for product recommendations above."
+    return render_template('main.html', content_based_rec=content_based_rec, message=message)
+
 
 # routes
 @app.route("/index")
